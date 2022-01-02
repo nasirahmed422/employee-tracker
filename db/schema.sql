@@ -1,28 +1,26 @@
--- Create tables if they don't exist --
-DROP DATABASE IF EXISTS employeetracker_db;
-CREATE DATABASE employeetracker_db;
-USE employeetracker_db;
+DROP DATABASE IF EXISTS employee_trackerDB;
+CREATE DATABASE employee_trackerDB;
+USE employee_trackerDB;
 
--- Create corresponding tables --
 CREATE TABLE department (
-  department_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(30) NOT NULL
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(30)
 );
 
-CREATE TABLE roles (
-    roles_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    title VARCHAR(30) NOT NULL,
-    salary DEC(7,2) NOT NULL,
-    department_id INT,
-    FOREIGN KEY (department_id) REFERENCES department(department_id) ON DELETE SET NULL
+CREATE TABLE role (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(30),
+  salary DECIMAL,
+  department_id INT,
+  FOREIGN KEY (department_id) REFERENCES department(id)
 );
 
 CREATE TABLE employee (
-    employee_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    first_name VARCHAR(30) NOT NULL,
-    last_name VARCHAR(30) NOT NULL,
-    roles_id INT, 
-    FOREIGN KEY (roles_id) REFERENCES roles(roles_id) ON DELETE SET NULL,
-    manager_id INT,
-    FOREIGN KEY (manager_id) REFERENCES employee(employee_id) ON DELETE SET NULL
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  first_name VARCHAR(30),
+  last_name VARCHAR(30),
+  manager_id INT,
+  role_id INT,
+  FOREIGN KEY (role_id) REFERENCES role(id),
+  FOREIGN KEY (manager_id) REFERENCES employee(id)
 );

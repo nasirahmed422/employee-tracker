@@ -1,22 +1,39 @@
--- CREATE STARTER DATA TO GO INSIDE TABLES --
-USE employeetracker_db;
+---DEPARTMENTS---
+INSERT INTO department (name)
+VALUE ("QA");
+INSERT INTO department (name)
+VALUE ("Engineering");
+INSERT INTO department (name)
+VALUE ("Finance");
+INSERT INTO department (name)
+VALUE ("HR");
 
-INSERT INTO department (name) VALUES 
-('Engineering'),
-('Sales'),
-('Marketing'),
-('Finance');
+---ROLES---
+INSERT INTO role (title, salary, department_id)
+VALUE ("Manager Engineering", 150000, 2);
+INSERT INTO role (title, salary, department_id)
+VALUE ("Manager HR", 100000, 4);
+INSERT INTO role (title, salary, department_id)
+VALUE ("Accountant", 125000, 3);
+INSERT INTO role (title, salary, department_id)
+VALUE ("Senior QA", 100000, 1);
+INSERT INTO role (title, salary, department_id)
+VALUE ("Automation Engineer", 120000, 1);
+INSERT INTO role (title, salary, department_id)
+VALUE ("Software Engineer", 120000, 2);
 
-INSERT INTO roles (title, salary, department_id) VALUES
-('QA Engineer', 80000, 1),
-('Developer', 95000, 1),
-('Sales Manager', 70000, 2), 
-('Marketing Manager', 70000, 3), 
-('Accountant', 85000, 4);
-
-
-INSERT INTO employee (first_name, last_name, roles_id, manager_id) VALUES
-('John', 'Doe', 17, null),
-('Jane', 'Doe', 16, null),
-('Mike', 'Hunt', 19, null),
-('James', 'Black', 18, null);
+---EMPLOYEES---
+INSERT INTO employee (first_name, last_name, manager_id, role_id)
+VALUE ("Johnny", "Cage", null, 1);
+INSERT INTO employee (first_name, last_name, manager_id, role_id)
+VALUE ("Mike", "Hunt", null, 2);
+INSERT INTO employee (first_name, last_name, manager_id, role_id)
+VALUE ("Maggi","Paggi",null,3);
+INSERT INTO employee (first_name, last_name, manager_id, role_id)
+VALUE ("Liu", "Kang", 1, 4);
+INSERT INTO employee (first_name, last_name, manager_id, role_id)
+VALUE ("Devorah", "Buggz", 4, 5);
+INSERT INTO employee (first_name, last_name, manager_id, role_id)
+VALUE ("Quan", "Chi", 1, 6);
+INSERT INTO employee (first_name, last_name, manager_id, role_id)
+VALUE ("Sarah", "Dudley", 2, 7);
